@@ -1,0 +1,23 @@
+@mixin font($family, $size, $style, $weight, $lineHeight) {
+  font-family: $family;
+  font-size: $size;
+  font-style: $style;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+
+.header-logo-template {
+  display: flex;
+  margin: 10px;
+}
+
+.header-logo-label {
+  @include font(
+    $family: Poppins,
+    $size: 30px,
+    $style: normal,
+    $weight: bold,
+    $lineHeight: 133.69%
+  );
+  margin-left: 10px;
+}
