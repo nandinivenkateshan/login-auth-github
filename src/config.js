@@ -1,1 +1,5 @@
-export const GIT_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
+
+export const fetchUrl = {
+  server: 'http://localhost:8000',
+  gitAuth: 'https://github.com/login/oauth/authorize'
+}

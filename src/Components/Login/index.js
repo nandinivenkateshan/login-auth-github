@@ -2,17 +2,17 @@ import React, { useState, useContext } from 'react'
 import OAuth2Login from 'react-simple-oauth2-login'
 import '../../assets/css/login.scss'
 import { AuthContext } from '../../Context'
-import { GIT_AUTHORIZE_URL } from '../../config'
+import { fetchUrl } from '../../config'
+import { login } from '../../actions'
 
 const LoginGitHub = () => {
   const { state, dispatch } = useContext(AuthContext)
   const { client_id, redirect_uri } = state
 
-  const fetchAccessToken = async (input) => {
-    console.log('input', input)
-    const response = await window.fetch('http://localhost:8000/fetchAccessToken', {
+  const fetchAccessToken = async (params) => {
+    const response = await window.fetch(`${fetchUrl.server}/getAccessToken`, {
       method: 'POST',
-      body: JSON.stringify(input),
+      body: JSON.stringify(params),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -21,31 +21,30 @@ const LoginGitHub = () => {
     console.log('result', result)
     if (result) {
       window.open(`${result.html_url}?tab=repositories`)
-      dispatch({
-        type: 'LOGIN',
-        payload: { user: result, isLoggedIn: true }
-      })
+      const payload = { user: result, isLoggedIn: true }
+      dispatch(login(payload))
     }
   }
 
-  const onSuccess = response => {
+  const handleSuccess = response => {
     console.log('response', response)
-    const input = { client_id, redirect_uri, code: response.code }
-    //fetchAccessToken(input)
-    // setCode(response.code)
+    const code = response.code
+    const input = { client_id, redirect_uri, code }
+    fetchAccessToken(input)
   }
-  const onFailure = response => {
+
+  const handleFailure = response => {
     console.error(response, 'response error')
   }
 
   return (
     <OAuth2Login
-      authorizationUrl={GIT_AUTHORIZE_URL}
+      authorizationUrl={fetchUrl.gitAuth}
       responseType='code'
       clientId={client_id}
       redirectUri={redirect_uri}
-      onSuccess={onSuccess}
-      onFailure={onFailure}
+      onSuccess={handleSuccess}
+      onFailure={handleFailure}
       className='login-btn'
     />
   )

@@ -1,3 +1,5 @@
+import { setLocalStorage } from '../util'
+
 export const initialState = {
   client_id: process.env.REACT_APP_CLIENT_ID,
   redirect_uri: process.env.REACT_APP_REDIRECT_URI
@@ -6,8 +8,7 @@ export const initialState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN': {
-      window.localStorage.setItem('isLoggedIn', JSON.stringify(action.payload.isLoggedIn))
-      window.localStorage.setItem('user', JSON.stringify(action.payload.user))
+      setLocalStorage(action.payload.user, action.payload.isLoggedIn)
       return {
         ...state,
         isLoggedIn: action.payload.isLoggedIn,
@@ -25,4 +26,3 @@ export const reducer = (state, action) => {
       return state
   }
 }
-
