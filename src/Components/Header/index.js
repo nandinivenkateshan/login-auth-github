@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -15,6 +15,8 @@ import MailOutlinedIcon from '@material-ui/icons/MailOutlined'
 import ShuffleOutlinedIcon from '@material-ui/icons/ShuffleOutlined'
 import Logo from '../Logo'
 import Login from '../Login'
+import { AuthContext } from '../../Context'
+import { logout } from '../../actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
     gridGap: '20px',
     cursor: 'pointer'
   }
-
 }))
 
 const Header = () => {
@@ -60,12 +61,20 @@ const Header = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
+  const { state, dispatch } = useContext(AuthContext)
+  const { isLoggedIn } = state
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget)
   }
 
   const handleMenuClick = () => {
     setAnchorEl(null)
+  }
+
+  const handleLogout = () => {
+    console.log('bjnfksjflk')
+    dispatch(logout())
   }
 
   return (
@@ -102,9 +111,12 @@ const Header = () => {
                   <MenuItem onClick={handleMenuClick}>Services</MenuItem>
                   <MenuItem onClick={handleMenuClick}>Product</MenuItem>
                   <MenuItem onClick={handleMenuClick}>Technology</MenuItem>
-                  <MenuItem onClick={handleMenuClick}>About</MenuItem>
+                  {isLoggedIn &&
+                    <MenuItem onClick={handleMenuClick} to='/about' component={RouterLink}>About</MenuItem>}
                   <MenuItem onClick={handleMenuClick}>Client</MenuItem>
-                  <Login />
+                  {isLoggedIn
+                    ? <Link color='inherit'>LogOut</Link>
+                    : <Login />}
                 </Menu>
               </div>)
             : (
@@ -113,9 +125,12 @@ const Header = () => {
                   <Link color='inherit'>Services</Link>
                   <Link color='inherit'>Product</Link>
                   <Link color='inherit'>Technology</Link>
-                  <Link color='inherit'>About</Link>
+                  {isLoggedIn &&
+                    <Link color='inherit' to='/about' component={RouterLink}>About</Link>}
                   <Link color='inherit'>Client</Link>
-                  <Login />
+                  {isLoggedIn
+                    ? <Link color='inherit' onClick={handleLogout}>LogOut</Link>
+                    : <Login />}
                 </Typography>
                 <section className={classes.headerIcons}>
                   <HomeIcon />

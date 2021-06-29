@@ -5,3 +5,9 @@ export const login = (params) => {
     payload: { ...params }
   }
 }
+
+export const logout = () => {
+  return {
+    type: 'LOGOUT'
+  }
+}

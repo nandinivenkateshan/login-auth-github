@@ -1,8 +1,8 @@
-import { setLocalStorage } from '../util'
+import { setLocalStorage, getLocalStorageDetails } from '../util'
 
 export const initialState = {
-  client_id: process.env.REACT_APP_CLIENT_ID,
-  redirect_uri: process.env.REACT_APP_REDIRECT_URI
+  isLoggedIn: getLocalStorageDetails('isLoggedIn') || false,
+  user: getLocalStorageDetails('user') || null
 }
 
 export const reducer = (state, action) => {
@@ -16,6 +16,7 @@ export const reducer = (state, action) => {
       }
     }
     case 'LOGOUT': {
+      window.localStorage.clear()
       return {
         ...state,
         isLoggedIn: false,
