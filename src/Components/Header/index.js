@@ -14,6 +14,7 @@ import HomeIcon from '@material-ui/icons/HomeOutlined'
 import MailOutlinedIcon from '@material-ui/icons/MailOutlined'
 import ShuffleOutlinedIcon from '@material-ui/icons/ShuffleOutlined'
 import Logo from '../Logo'
+import Login from '../Login'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,7 +104,8 @@ const Header = () => {
                   <MenuItem onClick={handleMenuClick}>Technology</MenuItem>
                   <MenuItem onClick={handleMenuClick}>About</MenuItem>
                   <MenuItem onClick={handleMenuClick}>Client</MenuItem>
-                  <MenuItem onClick={handleMenuClick}>Login</MenuItem>
+                  {/* <MenuItem onClick={handleMenuClick}>Login</MenuItem> */}
+                  <Login />
                 </Menu>
               </div>)
             : (
@@ -114,7 +116,8 @@ const Header = () => {
                   <Link color='inherit'>Technology</Link>
                   <Link color='inherit'>About</Link>
                   <Link color='inherit'>Client</Link>
-                  <Link color='inherit' to='login' component={RouterLink}>Login</Link>
+                  {/* <Link color='inherit' to='login' component={RouterLink}>Login</Link> */}
+                  <Login />
                 </Typography>
                 <section className={classes.headerIcons}>
                   <HomeIcon />
