@@ -1,7 +1,6 @@
 import React from 'react'
 import App from '../App'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import About from './About'
 import PageNotFound from './Error/PageNotFound'
 import ServerErr from './Error/ServerErr'
 
@@ -10,7 +9,7 @@ function routes () {
     <Router>
       <Switch>
         <Route exact path='/' component={App} />
-        <Route path='/about' component={About} />
+        <Route exact path='/about' component={App} />
         <Route path='/err' component={ServerErr} />
         <Route component={PageNotFound} />
       </Switch>

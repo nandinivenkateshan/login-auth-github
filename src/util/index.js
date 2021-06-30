@@ -5,5 +5,6 @@ export const setLocalStorage = (user, isLoggedIn) => {
 }
 
 export const getLocalStorageDetails = (param) => {
-  return JSON.parse(window.localStorage.getItem(param))
+  const value = JSON.parse(window.localStorage.getItem(param))
+  return value
 }

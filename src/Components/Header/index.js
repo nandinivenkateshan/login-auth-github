@@ -51,7 +51,14 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: 'repeat(3,1fr)',
     gridGap: '20px',
     cursor: 'pointer'
+  },
+  active: {
+    '&:focus': {
+      color: 'rgb(53, 58, 8)',
+      background: 'rgb(214, 201, 201)'
+    }
   }
+
 }))
 
 const Header = () => {
@@ -73,7 +80,6 @@ const Header = () => {
   }
 
   const handleLogout = () => {
-    console.log('bjnfksjflk')
     dispatch(logout())
   }
 
@@ -108,28 +114,31 @@ const Header = () => {
                   open={open}
                   onClose={handleMenuClick}
                 >
-                  <MenuItem onClick={handleMenuClick}>Services</MenuItem>
-                  <MenuItem onClick={handleMenuClick}>Product</MenuItem>
-                  <MenuItem onClick={handleMenuClick}>Technology</MenuItem>
+                  <MenuItem onClick={handleMenuClick} className={classes.active}>Services</MenuItem>
+                  <MenuItem onClick={handleMenuClick} className={classes.active}>Product</MenuItem>
+                  <MenuItem onClick={handleMenuClick} className={classes.active}>Technology</MenuItem>
                   {isLoggedIn &&
-                    <MenuItem onClick={handleMenuClick} to='/about' component={RouterLink}>About</MenuItem>}
-                  <MenuItem onClick={handleMenuClick}>Client</MenuItem>
+                    <MenuItem onClick={handleMenuClick} to='/about' component={RouterLink} className={classes.active}>About</MenuItem>}
+                  <MenuItem onClick={handleMenuClick} className={classes.active}>Client</MenuItem>
                   {isLoggedIn
-                    ? <Link color='inherit'>LogOut</Link>
-                    : <Login />}
+                    ? <MenuItem color='inherit' onClick={handleLogout} component={RouterLink} className={classes.active}>LogOut</MenuItem>
+                    : (
+                      <MenuItem>
+                        <Login />
+                      </MenuItem>)}
                 </Menu>
               </div>)
             : (
               <div className={classes.headerOptions}>
                 <Typography className={classes.headerLabels}>
-                  <Link color='inherit'>Services</Link>
-                  <Link color='inherit'>Product</Link>
-                  <Link color='inherit'>Technology</Link>
+                  <Link color='inherit' className={classes.active}>Services</Link>
+                  <Link color='inherit' className={classes.active}>Product</Link>
+                  <Link color='inherit' className={classes.active}>Technology</Link>
                   {isLoggedIn &&
-                    <Link color='inherit' to='/about' component={RouterLink}>About</Link>}
+                    <Link color='inherit' to='/about' component={RouterLink} className={classes.active}>About</Link>}
                   <Link color='inherit'>Client</Link>
                   {isLoggedIn
-                    ? <Link color='inherit' onClick={handleLogout}>LogOut</Link>
+                    ? <Link color='inherit' onClick={handleLogout} className={classes.active}>LogOut</Link>
                     : <Login />}
                 </Typography>
                 <section className={classes.headerIcons}>

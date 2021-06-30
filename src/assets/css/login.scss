@@ -4,4 +4,9 @@
     border:none;
     @include font($family:Roboto,$size:18px,$style:normal,$weight: 400,$lineHeight: 21px);
     background-color: #ffffff;
+    cursor: pointer;
+    &:active, &:focus {
+      color: rgb(53, 58, 8);
+      background:rgb(214, 201, 201);
+    }
   }

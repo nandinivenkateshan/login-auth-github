@@ -15,7 +15,6 @@ const getAccessToken = async (req, res) => {
       body: data
     })
     const paramsString = await response.text()
-    console.log('paramstring', paramsString)
     const params = new URLSearchParams(paramsString)
     const access_token = params.get('access_token')
     try {
@@ -25,7 +24,6 @@ const getAccessToken = async (req, res) => {
         }
       })
       const result = await userDataResponse.json()
-      console.log('result', result)
       return res.status(200).json(result)
     } catch (error) {
       return res.status(400).json(error)

@@ -29,7 +29,6 @@ const LoginGitHub = () => {
         window.open(`${result.html_url}?tab=repositories`)
         const payload = { user: result, isLoggedIn: true }
         dispatch(login(payload))
-        console.log('result', result)
       }
     } catch {
       setError(true)

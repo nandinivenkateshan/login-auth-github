@@ -6,7 +6,7 @@ export const AuthContext = createContext()
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  console.log('state',state)
+  console.log('state in context------------', state)
 
   return (
     <AuthContext.Provider
