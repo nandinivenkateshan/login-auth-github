@@ -9,7 +9,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
 app.use(express.static(path.join(__dirname, '../build')))
 
-const port = process.env.SERVER_PORT || 3000
+const port = process.env.PORT || 3000
 
 app.post('/getAccessToken', db.getAccessToken)
 
