@@ -21,7 +21,6 @@ const About = () => {
           <h5 className='about-container-login-name'>{user.login}</h5>
         </article>
       </article>
-
       <article>
         <p>Hey! I am using Github</p>
         <h4>{user.bio}</h4>

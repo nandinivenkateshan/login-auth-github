@@ -1,61 +1,62 @@
 .about-container {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 .about-container-pic {
-    height: 100px;
-    width:100px;
-    border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
 .about-container-profile-header {
-    display:flex;
+  display: flex;
 }
 
 .about-container-name {
-    margin:10px 30px;
+  margin: 10px 30px;
 }
 
 .about-container-username {
-    font-size: 30px;
-    margin-block: 0;
+  font-size: 30px;
+  margin-block: 0;
 }
 
 .about-container-login-name {
-    font-size: 20px;
-    margin-block: 0;
-    color:grey;
+  font-size: 20px;
+  margin-block: 0;
+  color: grey;
 }
 
 .about-container-mail {
-    display:flex;
-    color: #000000;
-    margin-bottom: 5px;
+  display: flex;
+  color: #000000;
+  margin-bottom: 5px;
 }
 
 .about-container-mail--margin {
-    margin:2px 0 0 3px;
+  margin: 2px 0 0 3px;
 }
 
 .blog-link {
-    color: #000000;
-    text-decoration: none;
+  color: #000000;
+  text-decoration: none;
 }
 
-.repo-details , .followers{
-    display: flex;
+.repo-details,
+.followers {
+  display: flex;
 }
 
-.repo-details-sec{
-    margin-right:20px;
+.repo-details-sec {
+  margin-right: 20px;
 }
 
 .followers-icon {
-    margin-top:12px;
+  margin-top: 12px;
 }
 
 @media screen and (min-width: 1024px) {
-    .about-container {
-        margin-left:300px;
-    }
+  .about-container {
+    margin-left: 300px;
+  }
 }

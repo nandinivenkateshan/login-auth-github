@@ -1,8 +1,7 @@
-$small: '500px';
-$tablet: '768px';
-$laptop: '1024px';
-$laptop-large: '1300px';
-
+$small: "500px";
+$tablet: "768px";
+$laptop: "1024px";
+$laptop-large: "1300px";
 
 //Mobile First Approach
 .about-page,
@@ -66,21 +65,19 @@ $laptop-large: '1300px';
   display: block;
 }
 
-
 // Read More Button
 .read-more-btn {
-    @extend .introSection-content-para;
-    background: #007bff;
-    color: #ffffff;
-    border: none;
-    margin: auto;
-    display: block;
-    height: 38px;
-    width: 120px;
-    border-radius: 4px;
-    padding: 12px, 32px, 12px, 32px;
-  }
-  
+  @extend .introSection-content-para;
+  background: #007bff;
+  color: #ffffff;
+  border: none;
+  margin: auto;
+  display: block;
+  height: 38px;
+  width: 120px;
+  border-radius: 4px;
+  padding: 12px, 32px, 12px, 32px;
+}
 
 //About Page
 .container--grey-background {
