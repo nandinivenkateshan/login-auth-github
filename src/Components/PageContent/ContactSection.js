@@ -10,7 +10,7 @@ import '../../assets/css/pageContent.scss'
 
 function ContactSection () {
   return (
-    <section className='contact-page'>
+    <section className='contact-page' id='contact'>
       <article className='contact-page-col1'>
         <p className='contact-page-col1-logo'>
           <img src={logo} alt='Logo' className='contact-page-col1-logo-pic' />

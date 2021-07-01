@@ -4,7 +4,7 @@ import '../../assets/css/pageContent.scss'
 
 function AboutOrizon () {
   return (
-    <main className='container--grey-background'>
+    <main className='container--grey-background' id='technology'>
       <section className='about-page'>
         <article className='about-page-img-container'>
           <img src={aboutLogo} alt='image' className='about-page-img' />

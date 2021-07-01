@@ -7,7 +7,7 @@ import '../../assets/css/pageContent.scss'
 
 function ProductAndServices () {
   return (
-    <section className='product-services-page'>
+    <section className='product-services-page' id='product-services'>
       <h2 className='product-services-page-heading'>Product and Services</h2>
       <section className='product-services-page-col-container'>
         <article className='product-services-page-col'>
