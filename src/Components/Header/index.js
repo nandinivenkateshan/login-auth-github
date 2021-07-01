@@ -17,6 +17,7 @@ import Logo from '../Logo'
 import Login from '../Login'
 import { AuthContext } from '../../Context'
 import { logout } from '../../actions'
+import ScrollLink from './ScrollLink'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -114,12 +115,20 @@ const Header = () => {
                   open={open}
                   onClose={handleMenuClick}
                 >
-                  <MenuItem onClick={handleMenuClick} className={classes.active}>Services</MenuItem>
-                  <MenuItem onClick={handleMenuClick} className={classes.active}>Product</MenuItem>
-                  <MenuItem onClick={handleMenuClick} className={classes.active}>Technology</MenuItem>
+                  <MenuItem onClick={handleMenuClick} className={classes.active}>
+                    <ScrollLink id='product-services' name='Services' />
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClick} className={classes.active}>
+                    <ScrollLink id='product-services' name='Product' />
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClick} className={classes.active}>
+                    <ScrollLink id='technology' name='Technology' />
+                  </MenuItem>
                   {isLoggedIn &&
                     <MenuItem onClick={handleMenuClick} to='/about' component={RouterLink} className={classes.active}>About</MenuItem>}
-                  <MenuItem onClick={handleMenuClick} className={classes.active}>Client</MenuItem>
+                  <MenuItem onClick={handleMenuClick} className={classes.active}>
+                    <ScrollLink id='contact' name='Client' />
+                  </MenuItem>
                   {isLoggedIn
                     ? <MenuItem color='inherit' onClick={handleLogout} component={RouterLink} className={classes.active}>LogOut</MenuItem>
                     : (
@@ -131,12 +140,12 @@ const Header = () => {
             : (
               <div className={classes.headerOptions}>
                 <Typography className={classes.headerLabels}>
-                  <Link color='inherit' className={classes.active}>Services</Link>
-                  <Link color='inherit' className={classes.active}>Product</Link>
-                  <Link color='inherit' className={classes.active}>Technology</Link>
+                  <ScrollLink id='product-services' class-name='classes.active' name='Services' />
+                  <ScrollLink id='product-services' class-name='classes.active' name='Product' />
+                  <ScrollLink id='technology' class-name='classes.active' name='Technology' />
                   {isLoggedIn &&
                     <Link color='inherit' to='/about' component={RouterLink} className={classes.active}>About</Link>}
-                  <Link color='inherit'>Client</Link>
+                  <ScrollLink id='contact' class-name='classes.active' name='Client' />
                   {isLoggedIn
                     ? <Link color='inherit' onClick={handleLogout} className={classes.active}>LogOut</Link>
                     : <Login />}
