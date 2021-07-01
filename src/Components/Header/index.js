@@ -64,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles()
+  const history = useHistory()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
   const theme = useTheme()
@@ -82,6 +83,11 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logout())
+  }
+
+  const handleHomeIcon = (param) => {
+    if (param) setAnchorEl(null)
+    history.push('/')
   }
 
   return (
@@ -115,6 +121,7 @@ const Header = () => {
                   open={open}
                   onClose={handleMenuClick}
                 >
+                  <MenuItem className={classes.active} onClick={() => handleHomeIcon('mobile')}>Home</MenuItem>
                   <MenuItem onClick={handleMenuClick} className={classes.active}>
                     <ScrollLink id='product-services' name='Services' />
                   </MenuItem>
@@ -151,7 +158,7 @@ const Header = () => {
                     : <Login />}
                 </Typography>
                 <section className={classes.headerIcons}>
-                  <HomeIcon />
+                  <HomeIcon onClick={handleHomeIcon} />
                   <MailOutlinedIcon />
                   <ShuffleOutlinedIcon />
                 </section>
