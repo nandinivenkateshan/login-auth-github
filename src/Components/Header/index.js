@@ -85,6 +85,7 @@ const Header = () => {
   }
 
   const handleLogout = () => {
+    setAnchorEl(null)
     dispatch(logout())
   }
 
@@ -125,24 +126,24 @@ const Header = () => {
                   onClose={handleMenuClick}
                 >
                   <MenuItem className={classes.active} onClick={() => handleHomeIcon('mobile')}>Home</MenuItem>
-                  <MenuItem onClick={handleMenuClick} className={classes.active}>
-                    <ScrollLink id='product-services' name='Services' />
+                  <MenuItem className={classes.active}>
+                    <ScrollLink id='product-services' name='Services' onHandleMenuClick={handleMenuClick} />
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClick} className={classes.active}>
-                    <ScrollLink id='product-services' name='Product' />
+                  <MenuItem className={classes.active}>
+                    <ScrollLink id='product-services' name='Product' onHandleMenuClick={handleMenuClick} />
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClick} className={classes.active}>
-                    <ScrollLink id='technology' name='Technology' />
+                  <MenuItem className={classes.active}>
+                    <ScrollLink id='technology' name='Technology' onHandleMenuClick={handleMenuClick} />
                   </MenuItem>
                   {isLoggedIn &&
                     <MenuItem onClick={handleMenuClick} to='/about' component={RouterLink} className={classes.active}>About</MenuItem>}
-                  <MenuItem onClick={handleMenuClick} className={classes.active}>
-                    <ScrollLink id='contact' name='Client' />
+                  <MenuItem className={classes.active}>
+                    <ScrollLink id='contact' name='Client' onHandleMenuClick={handleMenuClick} />
                   </MenuItem>
                   {isLoggedIn
                     ? <MenuItem color='inherit' onClick={handleLogout} component={RouterLink} className={classes.active}>LogOut</MenuItem>
                     : (
-                      <MenuItem>
+                      <MenuItem onHandleMenuClick={handleMenuClick}>
                         <Login />
                       </MenuItem>)}
                 </Menu>
