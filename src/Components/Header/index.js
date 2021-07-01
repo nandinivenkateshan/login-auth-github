@@ -9,7 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Link from '@material-ui/core/Link'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useHistory } from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/HomeOutlined'
 import MailOutlinedIcon from '@material-ui/icons/MailOutlined'
 import ShuffleOutlinedIcon from '@material-ui/icons/ShuffleOutlined'
@@ -58,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
       color: 'rgb(53, 58, 8)',
       background: 'rgb(214, 201, 201)'
     }
+  },
+  mailIcon: {
+    color: '#000000'
   }
 
 }))
@@ -159,7 +162,9 @@ const Header = () => {
                 </Typography>
                 <section className={classes.headerIcons}>
                   <HomeIcon onClick={handleHomeIcon} />
-                  <MailOutlinedIcon />
+                  <a href='mailto:community@orizon.com' className={classes.mail}>
+                    <MailOutlinedIcon />
+                  </a>
                   <ShuffleOutlinedIcon />
                 </section>
               </div>)}
