@@ -2,7 +2,9 @@ import { setLocalStorage, getLocalStorageDetails } from '../util'
 
 export const initialState = {
   isLoggedIn: getLocalStorageDetails('isLoggedIn') || false,
-  user: getLocalStorageDetails('user') || null
+  user: getLocalStorageDetails('user') || null,
+  openSnack: false,
+  snackMessage: ''
 }
 
 export const reducer = (state, action) => {
@@ -12,7 +14,9 @@ export const reducer = (state, action) => {
       return {
         ...state,
         isLoggedIn: action.payload.isLoggedIn,
-        user: action.payload.user
+        user: action.payload.user,
+        openSnack: true,
+        snackMessage: action.payload.snackMessage
       }
     }
     case 'LOGOUT': {
@@ -20,7 +24,16 @@ export const reducer = (state, action) => {
       return {
         ...state,
         isLoggedIn: false,
-        user: null
+        user: null,
+        openSnack: true,
+        snackMessage: action.payload.snackMessage
+      }
+    }
+    case 'CloseSnackBar': {
+      return {
+        ...state,
+        openSnack: false
+
       }
     }
     default:

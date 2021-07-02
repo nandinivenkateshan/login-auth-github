@@ -27,7 +27,7 @@ const LoginGitHub = () => {
       const result = await response.json()
       if (result) {
         window.open(`${result.html_url}?tab=repositories`)
-        const payload = { user: result, isLoggedIn: true }
+        const payload = { user: result, isLoggedIn: true, snackMessage: 'Logged in Successfully!' }
         dispatch(login(payload))
       }
     } catch {

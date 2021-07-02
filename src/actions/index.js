@@ -6,8 +6,15 @@ export const login = (params) => {
   }
 }
 
-export const logout = () => {
+export const logout = (params) => {
   return {
-    type: 'LOGOUT'
+    type: 'LOGOUT',
+    payload: { ...params }
+  }
+}
+
+export const closeSnackBar = () => {
+  return {
+    type: 'CloseSnackBar'
   }
 }

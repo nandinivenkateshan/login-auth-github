@@ -18,6 +18,7 @@ import Login from '../Login'
 import { AuthContext } from '../../Context'
 import { logout } from '../../actions'
 import ScrollLink from './ScrollLink'
+import CustomizedSnackbars from '../SnackBar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,7 +75,7 @@ const Header = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const { state, dispatch } = useContext(AuthContext)
-  const { isLoggedIn } = state
+  const { isLoggedIn, openSnack } = state
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget)
@@ -86,7 +87,8 @@ const Header = () => {
 
   const handleLogout = () => {
     setAnchorEl(null)
-    dispatch(logout())
+    const payload = { snackMessage: 'Logged out Successfully!' }
+    dispatch(logout(payload))
   }
 
   const handleHomeIcon = (param) => {
@@ -163,7 +165,7 @@ const Header = () => {
                 </Typography>
                 <section className={classes.headerIcons}>
                   <HomeIcon onClick={handleHomeIcon} />
-                  <a href='mailto:community@orizon.com' className={classes.mail}>
+                  <a href='mailto:community@orizon.com' className={classes.mailIcon}>
                     <MailOutlinedIcon />
                   </a>
                   <ShuffleOutlinedIcon />
@@ -171,6 +173,7 @@ const Header = () => {
               </div>)}
         </Toolbar>
       </AppBar>
+      {openSnack && <CustomizedSnackbars />}
     </div>
   )
 }
