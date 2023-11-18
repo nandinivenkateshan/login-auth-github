@@ -13,5 +13,4 @@
 Refer the doc to create github oAuth(https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
 
 
-### Deployed at 
-- https://login-auth-github.herokuapp.com/
+
